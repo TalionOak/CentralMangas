@@ -17,7 +17,7 @@ namespace VersaoDesktop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ScanMenuForm());
+            Application.Run(new FormMenuScans());
         }
     }
 }

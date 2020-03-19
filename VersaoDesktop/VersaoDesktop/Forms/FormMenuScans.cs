@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Windows.Forms;
+using VersaoDesktop.Forms.UnionMangas;
 
 namespace VersaoDesktop.Forms
 {
-    public partial class ScanMenuForm : Form
+    public partial class FormMenuScans : Form
     {
-        public ScanMenuForm()
+        public FormMenuScans()
         {
             InitializeComponent();
         }
@@ -15,12 +16,17 @@ namespace VersaoDesktop.Forms
 
 
 
-           
+
         }
 
         private void btnVulcanNovel_Click(object sender, EventArgs e)
         {
             new VulcanNovelForm().Show();
+        }
+
+        private void btnUnionMangas_Click(object sender, EventArgs e)
+        {
+            new FormHudUnionMangas().Show();
         }
     }
 }

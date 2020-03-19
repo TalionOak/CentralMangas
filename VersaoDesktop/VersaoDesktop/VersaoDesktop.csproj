@@ -7,11 +7,34 @@
     <ProjectGuid>{5CFA84BB-D130-45D4-A67A-F13D7E70F266}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>VersaoDesktop</RootNamespace>
-    <AssemblyName>VersaoDesktop</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <AssemblyName>Central Mangas</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\Users\Ailton Silva\Desktop\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <ProductName>Central Mangas</ProductName>
+    <PublisherName>Talion Oak</PublisherName>
+    <SuiteName>Central Mangas</SuiteName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <DisallowUrlActivation>true</DisallowUrlActivation>
+    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -22,6 +45,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +55,37 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>F8D29F98B07018E13E870A301FED84D68E52973E</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>VersaoDesktop.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>CentralMangas.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack, Version=1.11.22.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
@@ -52,12 +107,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Link.cs" />
     <Compile Include="Entidades\MangaEntidade.cs" />
-    <Compile Include="Forms\ScanMenuForm.cs">
+    <Compile Include="Entidades\PesquisaEntidade.cs" />
+    <Compile Include="Forms\NovelDescForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ScanMenuForm.Designer.cs">
-      <DependentUpon>ScanMenuForm.cs</DependentUpon>
+    <Compile Include="Forms\NovelDescForm.Designer.cs">
+      <DependentUpon>NovelDescForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormMenuScans.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMenuScans.Designer.cs">
+      <DependentUpon>FormMenuScans.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UnionMangas\FormHudUnionMangas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UnionMangas\FormHudUnionMangas.Designer.cs">
+      <DependentUpon>FormHudUnionMangas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UnionMangas\FormMangaInfoUnionMangas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UnionMangas\FormMangaInfoUnionMangas.Designer.cs">
+      <DependentUpon>FormMangaInfoUnionMangas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UnionMangas\FormMangaReaderUnionMangas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UnionMangas\FormMangaReaderUnionMangas.Designer.cs">
+      <DependentUpon>FormMangaReaderUnionMangas.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\VulcanNovelForm.cs">
       <SubType>Form</SubType>
@@ -67,8 +148,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\ScanMenuForm.resx">
-      <DependentUpon>ScanMenuForm.cs</DependentUpon>
+    <Compile Include="Scans\ScanVulcanNovel.cs" />
+    <EmbeddedResource Include="Forms\NovelDescForm.resx">
+      <DependentUpon>NovelDescForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMenuScans.resx">
+      <DependentUpon>FormMenuScans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UnionMangas\FormHudUnionMangas.resx">
+      <DependentUpon>FormHudUnionMangas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UnionMangas\FormMangaInfoUnionMangas.resx">
+      <DependentUpon>FormMangaInfoUnionMangas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UnionMangas\FormMangaReaderUnionMangas.resx">
+      <DependentUpon>FormMangaReaderUnionMangas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\VulcanNovelForm.resx">
       <DependentUpon>VulcanNovelForm.cs</DependentUpon>
@@ -81,8 +175,10 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -92,12 +188,25 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="VersaoDesktop_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\" />
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CentralMangas.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

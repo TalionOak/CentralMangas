@@ -1,35 +1,18 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace VersaoDesktop.Entidades
+﻿namespace VersaoDesktop.Entidades
 {
     public class MangaEntidade
     {
-        public string Nome { get; set; }
-        public Uri LinkPrimeiroCap { get; set; }
+        public string MangaNome { get; }
+        public string MangaLink { get; }
+        public string MangaFotoLink { get; }
+        public string ToolTip { get; }
 
-        public static MangaEntidade LoadFromFile(string path)
+        public MangaEntidade(string nome, string mangaLink, string mangaFotoLink, string tooltip)
         {
-            if (!File.Exists(path))
-            {
-                MangaEntidade config = new MangaEntidade();
-                config.SaveToFile(path);
-                return null;
-            }
-            else
-                using (var sr = new StreamReader(path))
-                    return JsonConvert.DeserializeObject<MangaEntidade>(sr.ReadToEnd());
-        }
-
-        public void SaveToFile(string path)
-        {
-            using (var sw = new StreamWriter(path))
-                sw.Write(JsonConvert.SerializeObject(this, Formatting.Indented));
+            this.MangaNome = nome;
+            this.ToolTip = tooltip;
+            this.MangaLink = mangaLink;
+            this.MangaFotoLink = mangaFotoLink;
         }
     }
 }
