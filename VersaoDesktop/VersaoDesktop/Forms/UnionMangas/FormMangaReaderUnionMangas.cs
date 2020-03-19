@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing.Drawing2D;
 using System.Net;
+using VersaoDesktop.Entidades;
+using Newtonsoft.Json;
 
 namespace VersaoDesktop.Forms.UnionMangas
 {
@@ -157,6 +154,36 @@ namespace VersaoDesktop.Forms.UnionMangas
                         break;
                 }
             }
+        }
+    }
+
+    public class GitHubClient
+    {
+        private readonly HttpClient _httpClient;
+
+        public GitHubClient(HttpClient httpClient)
+        {
+            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+        }
+
+        public async Task<PesquisaEntidade> GetRepositories()
+        {
+            var request = CreateRequest();
+            var result = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+
+            var contentString = await result.Content.ReadAsStringAsync();
+
+            //JsonConvert.DeserializeObject
+            return await Task.Run(() =>
+            {
+                JsonConvert.DeserializeObject<MangaEntidade>(contentString);
+            }
+
+        }
+
+        private static HttpRequestMessage CreateRequest()
+        {
+            return new HttpRequestMessage(HttpMethod.Get, "");
         }
     }
 }
