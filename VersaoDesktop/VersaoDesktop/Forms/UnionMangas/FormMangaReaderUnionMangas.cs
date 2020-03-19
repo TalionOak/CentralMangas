@@ -60,39 +60,6 @@ namespace VersaoDesktop.Forms.UnionMangas
             AutoScrollPosition = new Point(Math.Abs(AutoScrollPosition.X), Math.Abs(CurrentPoint.Y));
         }
 
-        private void PictureBox1_MouseClick(object sender, MouseEventArgs e)
-        {
-            switch (e.Button)
-            {
-                case MouseButtons.Right:
-                    ZoomInOut(((PictureBox)sender), true);
-                    break;
-                case MouseButtons.Left:
-                    ZoomInOut(((PictureBox)sender), false);
-                    break;
-            }
-        }
-
-        private void ZoomInOut(PictureBox pb, bool zoom)
-        {
-            //Zoom ratio by which the images will be zoomed by default
-            int zoomRatio = 10;
-            //Set the zoomed width and height
-            int widthZoom = pb.Width * zoomRatio / 100;
-            int heightZoom = pb.Height * zoomRatio / 100;
-            //zoom = true --> zoom in
-            //zoom = false --> zoom out
-            if (!zoom)
-            {
-                widthZoom *= -1;
-                heightZoom *= -1;
-            }
-            //Add the width and height to the picture box dimensions
-            pb.Width = Size.Width;
-            pb.Height += heightZoom;
-
-        }
-
         public Image DownloadImageFromUrl(string imageUrl)
         {
             Image image = null;
