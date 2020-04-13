@@ -11,7 +11,7 @@ namespace CentralMangas
         {
             InitializeComponent();
 
-            MainPage = new UnionsMangaPage();
+            MainPage = new NavigationPage(new UnionsMangaHud());
         }
 
         protected override void OnStart()

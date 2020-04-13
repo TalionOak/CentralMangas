@@ -17,8 +17,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Paginas\UnionsMangaPage.xaml">
+    <EmbeddedResource Update="Paginas\Page1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Paginas\UnionsMangaHud.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Testes\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Paginas\UnionsMangaHud.xaml.cs">
+      <DependentUpon>UnionsMangaHud.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

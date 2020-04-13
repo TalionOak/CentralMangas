@@ -8,16 +8,21 @@ namespace CentralMangas.Servicos.UnionMangas
     public class EntidadeManga
     {
         public string MangaNome { get; }
-        public ImageSource MangaLink { get; }
-        public string MangaFotoLink { get; }
+        public string MangaLink { get; }
+        public ImageSource MangaFotoLink { get; }
         public string ToolTip { get; }
+
+        public EntidadeManga()
+        {
+
+        }
 
         public EntidadeManga(string nome, string mangaLink, string mangaFotoLink, string tooltip)
         {
             MangaNome = nome;
             ToolTip = tooltip;
-            MangaLink = ImageSource.FromUri(new Uri(mangaLink));
-            MangaFotoLink = mangaFotoLink;
+            MangaLink = mangaLink;
+            MangaFotoLink = ImageSource.FromUri(new Uri(mangaFotoLink)) ;
         }
     }
 }

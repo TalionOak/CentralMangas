@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections;
 using Xamarin.Forms;
 
-namespace CentralMangas.Testes
+namespace CentralMangas.Controls
 {
-    class FlexView : FlexLayout
+    public class FlexView : FlexLayout
     {
         public DataTemplate ItemTemplate { get; set; }
 
@@ -31,6 +28,5 @@ namespace CentralMangas.Testes
                 self.Children.Add(view);
             }
         }
-
     }
 }

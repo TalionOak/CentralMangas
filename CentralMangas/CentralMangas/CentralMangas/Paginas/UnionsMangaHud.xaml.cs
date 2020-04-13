@@ -11,21 +11,13 @@ using Xamarin.Forms.Xaml;
 namespace CentralMangas.Paginas
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class UnionsMangaPage : ContentPage
+    public partial class UnionsMangaHud : ContentPage
     {
-        public UnionsMangaPage()
+        public UnionsMangaHud()
         {
             InitializeComponent();
             vAsync();
         }
-
-
-        //public async void ItemTapped(object sender, ItemTappedEventArgs e)
-        //{
-        //    var myListView = (ListView)sender;
-        //    var myItem = (EntidadeManga)myListView.SelectedItem;
-        //    await DisplayAlert("Item Selecionado", myItem.ToolTip, "ok");
-        //}
 
         public async void vAsync()
         {
@@ -40,7 +32,9 @@ namespace CentralMangas.Paginas
         public void OnTapped(object sender, EventArgs e)
         {
             var g = (View)sender;
-            //g.BindingContext
+            var manga = (EntidadeManga)g.BindingContext;
+
+            Navigation.PushAsync(new Page1(manga));
         }
     }
 }
