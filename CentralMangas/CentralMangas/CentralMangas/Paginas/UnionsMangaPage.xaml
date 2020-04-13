@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:controls="clr-namespace:CentralMangas.Testes"
+             x:Class="CentralMangas.Paginas.UnionsMangaPage">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <Grid>
+                    <controls:FlexView 
+                    Wrap="Wrap" 
+                    x:Name="Flex"
+                    BackgroundColor="Black">
+                        <controls:FlexView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout 
+                                FlexLayout.Basis="33%" 
+                                Margin="2"
+                                BackgroundColor="#1a1818" 
+                                HeightRequest="230" 
+                                WidthRequest="120" 
+                                BindingContext="{Binding EntidadeManga}">
+                                    <AbsoluteLayout>
+                                        <ActivityIndicator IsRunning="{Binding Source={x:Reference image1}, Path=IsLoading }"
+                                       AbsoluteLayout.LayoutBounds="0.5,0.5,100,100" 
+                                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                                       Color="Yellow" />
+                                        <Image 
+                                    x:Name="image1" 
+                                    Source="{Binding MangaFotoLink}" 
+                                    Aspect="Fill" 
+                                    HeightRequest="180">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnTapped"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </AbsoluteLayout>
+                                    <Label 
+                                    TextColor="White"
+                                    Text="{Binding MangaNome}" 
+                                    HorizontalTextAlignment="Center" 
+                                    VerticalTextAlignment="Start">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnTapped"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </StackLayout>
+                            </DataTemplate>
+                        </controls:FlexView.ItemTemplate>
+
+                        <!--<StackLayout FlexLayout.Basis="33%" Margin="2" BackgroundColor="#1a1818" HeightRequest="230" WidthRequest="120">
+                        <Image  Source="foto7.jpg" Aspect="Fill" HeightRequest="180" />
+                        <Label Text="(E)" TextColor="White"  HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
+                    </StackLayout>
+
+                    <StackLayout FlexLayout.Basis="33%" Margin="2" BackgroundColor="#1a1818" HeightRequest="230" WidthRequest="120">
+                        <Image Source="foto2.jpg" Aspect="Fill" HeightRequest="180"/>
+                        <Label TextColor="White" Text="-Rain- (Oneshot)" HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
+                    </StackLayout>
+
+                    <StackLayout FlexLayout.Basis="33%" Margin="2" BackgroundColor="#1a1818" HeightRequest="230" WidthRequest="120">
+                        <Image Source="foto3.jpg" Aspect="Fill" HeightRequest="180"/>
+                        <Label TextColor="White" Text="1-nen A-Gumi no Monster" HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
+                    </StackLayout>
+
+                    <StackLayout FlexLayout.Basis="33%" Padding="2" BackgroundColor="#1a1818" HeightRequest="230" WidthRequest="120">
+                        <AbsoluteLayout>
+                            <ActivityIndicator IsRunning="true"
+                         AbsoluteLayout.LayoutBounds="0.5,0.5,100,100" 
+                         AbsoluteLayout.LayoutFlags="PositionProportional"
+                         Color="Yellow" />
+                            <Image Aspect="Fill" HeightRequest="180"/>
+                        </AbsoluteLayout>
+                        <Label TextColor="White" Text="12 Nin no Yasashii Koroadsasdsh..." HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
+                    </StackLayout>-->
+                    </controls:FlexView>
+                    <ActivityIndicator IsRunning="true"
+                         AbsoluteLayout.LayoutBounds="0.5,0.5,100,100" 
+                         AbsoluteLayout.LayoutFlags="PositionProportional"
+                         Color="Yellow" />
+                </Grid>
+            </ScrollView>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
