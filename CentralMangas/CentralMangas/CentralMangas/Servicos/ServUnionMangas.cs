@@ -135,9 +135,6 @@ namespace CentralMangas.Servicos
                 string mangaCap = item.ChildNodes[1].ChildNodes[3].InnerText;
                 string mangaCapData = item.ChildNodes[1].ChildNodes[5].InnerText;
 
-                //button1.Text = $"{mangaCap} {mangaCapData}";
-                //button1.Tag = mangaLink;
-                //button1.MouseClick += Button1_MouseClick;
                 DateTime.TryParse(mangaCapData, out DateTime data);
                 capitulos.Add(new EntidadeCapitulo()
                 {

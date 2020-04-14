@@ -1,43 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:controls="clr-namespace:CentralMangas.Controls"
-             mc:Ignorable="d"
-             x:Class="CentralMangas.Paginas.PageMangaInfo">
-    <ContentPage.Resources>
-
-        <Style TargetType="Button">
-            <Setter Property="FlexLayout.Basis" Value="20%"/>
-        </Style>
-    </ContentPage.Resources>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:CentralMangas.Controls"
+    mc:Ignorable="d"
+    x:Class="CentralMangas.Paginas.PageMangaInfo">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout
+        <ScrollView
             BackgroundColor="Black">
-                <Image Source="foto6.jpg" 
-                     Aspect="Fill"
-                       x:Name="imageManga"
-                     HeightRequest="200"
-                     WidthRequest="200"
-                     HorizontalOptions="Center" />
-                <Label Text="Welcome to Xamarin.Forms!"
-                TextColor="White"
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout>
+                <Frame
+                    Padding="1"
+                    HorizontalOptions="CenterAndExpand">
+                    <Image
+                        x:Name="MangaFoto"
+                        Aspect="Fill"
+                        HeightRequest="200"
+                        WidthRequest="160"
+                        HorizontalOptions="CenterAndExpand" />
+                </Frame>
+                <Frame
+                    Padding="0"
+                    BackgroundColor="Black">
+                    <Label
+                        x:Name="MangaNome"
+                        TextColor="White"
+                        HorizontalOptions="CenterAndExpand" />
+                </Frame>
+                <Frame
+                    Padding="0"
+                    BackgroundColor="Black">
+                    <Label
+                        x:Name="MangaDescricao"
+                        TextColor="White"
+                        HorizontalOptions="CenterAndExpand" />
+                </Frame>
                 <controls:FlexView
-                    Wrap="Wrap"
-                    x:Name="flexcaps">
+                    x:Name="Capitulos"
+                    Wrap="Wrap">
                     <controls:FlexView.ItemTemplate>
                         <DataTemplate>
-                            <Button Text="{Binding mangacapButton}"
-                               FlexLayout.Basis="20%"
-                                    BackgroundColor="White"
-                                Clicked="Clicado"/>
+                            <Button
+                                Text="{Binding Nome}"
+                                Clicked="Clicado"
+                                FlexLayout.Basis="25%"
+                                BackgroundColor="#1a1818"
+                                TextColor="White"
+                                Margin="2"
+                                HeightRequest="50" />
                         </DataTemplate>
                     </controls:FlexView.ItemTemplate>
-                    <Button Text="Cap 1" Clicked="Clicado" BackgroundColor="Green"/>
                 </controls:FlexView>
+                <ActivityIndicator
+                    IsRunning="true"
+                    x:Name="CarregandoCapitulos"
+                    Color="Yellow" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

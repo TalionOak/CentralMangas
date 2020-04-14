@@ -1,55 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             xmlns:controls="clr-namespace:CentralMangas.Controls"
-             x:Class="CentralMangas.Paginas.PageUnionsMangaHud">
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:controls="clr-namespace:CentralMangas.Controls"
+    x:Class="CentralMangas.Paginas.PageUnionsMangaHud">
     <ContentPage.Content>
         <ScrollView>
             <Grid>
-                <controls:FlexView 
-                    Wrap="Wrap" 
+                <controls:FlexView
+                    Wrap="Wrap"
                     x:Name="Flex"
                     BackgroundColor="Black">
                     <controls:FlexView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout 
-                                FlexLayout.Basis="33%" 
+                            <StackLayout
+                                FlexLayout.Basis="33%"
                                 Margin="2"
-                                BackgroundColor="#1a1818" 
-                                HeightRequest="230" 
+                                BackgroundColor="#1a1818"
+                                HeightRequest="230"
                                 BindingContext="{Binding EntidadeManga}">
-                                <Frame HeightRequest="180" Padding="0">
+                                <Frame
+                                    HeightRequest="180"
+                                    Padding="0">
                                     <AbsoluteLayout>
-                                        <ActivityIndicator IsRunning="{Binding Source={x:Reference image1}, Path=IsLoading }"
-                                       AbsoluteLayout.LayoutBounds="0.5,0.5,100,100" 
-                                       AbsoluteLayout.LayoutFlags="PositionProportional"
-                                       Color="Yellow" />
-                                        <Image 
-                                    x:Name="image1" 
-                                    Source="{Binding Foto}" 
-                                     AbsoluteLayout.LayoutFlags="All"
-                                    AbsoluteLayout.LayoutBounds="0,0,1,1"
-                                    Aspect="Fill"
-                                    VerticalOptions="Fill"
-                                    HorizontalOptions="Fill">
+                                        <ActivityIndicator
+                                            IsRunning="{Binding Source={x:Reference image1}, Path=IsLoading }"
+                                            AbsoluteLayout.LayoutBounds="0.5,0.5,100,100"
+                                            AbsoluteLayout.LayoutFlags="PositionProportional"
+                                            Color="Yellow" />
+                                        <Image
+                                            x:Name="image1"
+                                            Source="{Binding Foto}"
+                                            AbsoluteLayout.LayoutFlags="All"
+                                            AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                            Aspect="Fill"
+                                            VerticalOptions="Fill"
+                                            HorizontalOptions="Fill">
                                             <Image.GestureRecognizers>
-                                                <ClickGestureRecognizer Clicked="OnTapped"/>
-                                                <TapGestureRecognizer Tapped="OnTapped"/>
+                                                <ClickGestureRecognizer
+                                                    Clicked="OnTapped" />
+                                                <TapGestureRecognizer
+                                                    Tapped="OnTapped" />
                                             </Image.GestureRecognizers>
                                         </Image>
                                     </AbsoluteLayout>
                                 </Frame>
-                                <Label 
+                                <Label
                                     TextColor="White"
-                                    Text="{Binding Nome}" 
-                                    HorizontalTextAlignment="Center" 
+                                    Text="{Binding Nome}"
+                                    HorizontalTextAlignment="Center"
                                     VerticalTextAlignment="Start">
                                     <Label.GestureRecognizers>
-                                        <ClickGestureRecognizer Clicked="OnTapped"/>
-                                        <TapGestureRecognizer Tapped="OnTapped"/>
+                                        <ClickGestureRecognizer
+                                            Clicked="OnTapped" />
+                                        <TapGestureRecognizer
+                                            Tapped="OnTapped" />
                                     </Label.GestureRecognizers>
                                 </Label>
                             </StackLayout>
@@ -58,7 +66,7 @@
 
 
                     <!--Testes-->
-                    <StackLayout 
+                    <!--<StackLayout 
                                 FlexLayout.Basis="33%" 
                                 Margin="2"
                                 BackgroundColor="#1a1818" 
@@ -115,7 +123,7 @@
                             <Image Aspect="Fill" HeightRequest="180"/>
                         </AbsoluteLayout>
                         <Label TextColor="White" Text="12 Nin no Yasashii Koroadsasdsh..." HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
-                    </StackLayout>
+                    </StackLayout>-->
 
                 </controls:FlexView>
                 <!--<ActivityIndicator

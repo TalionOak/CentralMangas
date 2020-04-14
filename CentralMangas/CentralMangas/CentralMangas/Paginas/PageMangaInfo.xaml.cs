@@ -12,27 +12,27 @@ namespace CentralMangas.Paginas
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PageMangaInfo : ContentPage
     {
-        private EntidadeManga _mangaEntidade;
+        private EntidadeManga _manga;
         public PageMangaInfo(EntidadeManga manga)
         {
             InitializeComponent();
-            _mangaEntidade = manga;
+            _manga = manga;
             Carregar();
+            MangaNome.Text = _manga.Nome;
+            MangaFoto.Source = _manga.Foto;
+            MangaDescricao.Text = _manga.ToolTip;
         }
 
         public async void Carregar()
         {
-            flexcaps.ItemsSource = await ServUnionMangas.CarregarInfoManga(_mangaEntidade);
+            _manga.Capitulos = await ServUnionMangas.CarregarInfoManga(_manga);
+            CarregandoCapitulos.IsRunning = false;
+            Capitulos.ItemsSource = _manga.Capitulos;
         }
 
         void Clicado(object sender, EventArgs args)
         {
             var f = (Button)sender;
-        }
-
-        public class manga
-        {
-            public string mangacapButton { get; set; }
         }
     }
 }
