@@ -138,6 +138,7 @@
     <Content Include="foto6.jpg" />
     <Content Include="foto7.jpg" />
     <Content Include="foto8.jpg" />
+    <Content Include="Logo.png" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,6 @@
-﻿using CentralMangas.Servicos.UnionMangas;
+﻿using CentralMangas.Entidades;
+using CentralMangas.Servicos;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,9 +8,9 @@ using Xamarin.Forms.Xaml;
 namespace CentralMangas.Paginas
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class UnionsMangaHud : ContentPage
+    public partial class PageUnionsMangaHud : ContentPage
     {
-        public UnionsMangaHud()
+        public PageUnionsMangaHud()
         {
             InitializeComponent();
             vAsync();
@@ -23,7 +20,7 @@ namespace CentralMangas.Paginas
         {
             if (!DesignMode.IsDesignModeEnabled)
             {
-                UnionHud union = new UnionHud();
+                ServUnionMangas union = new ServUnionMangas();
                 Flex.ItemsSource = await union.CarregarHudAsync();
                 //MangasCarregando.IsRunning = false;
             }
@@ -34,7 +31,7 @@ namespace CentralMangas.Paginas
             var g = (View)sender;
             var manga = (EntidadeManga)g.BindingContext;
 
-            Navigation.PushAsync(new Page1(manga));
+            Navigation.PushAsync(new PageMangaInfo(manga));
         }
     }
 }

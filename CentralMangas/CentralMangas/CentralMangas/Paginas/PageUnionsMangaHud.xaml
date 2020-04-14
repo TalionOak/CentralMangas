@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:controls="clr-namespace:CentralMangas.Controls"
-             x:Class="CentralMangas.Paginas.UnionsMangaHud">
+             x:Class="CentralMangas.Paginas.PageUnionsMangaHud">
     <ContentPage.Content>
         <ScrollView>
             <Grid>
@@ -20,27 +20,31 @@
                                 Margin="2"
                                 BackgroundColor="#1a1818" 
                                 HeightRequest="230" 
-                                WidthRequest="120" 
                                 BindingContext="{Binding EntidadeManga}">
-                                <AbsoluteLayout>
-                                    <ActivityIndicator IsRunning="{Binding Source={x:Reference image1}, Path=IsLoading }"
+                                <Frame HeightRequest="180" Padding="0">
+                                    <AbsoluteLayout>
+                                        <ActivityIndicator IsRunning="{Binding Source={x:Reference image1}, Path=IsLoading }"
                                        AbsoluteLayout.LayoutBounds="0.5,0.5,100,100" 
                                        AbsoluteLayout.LayoutFlags="PositionProportional"
                                        Color="Yellow" />
-                                    <Image 
+                                        <Image 
                                     x:Name="image1" 
-                                    Source="{Binding MangaFotoLink}" 
-                                    Aspect="Fill" 
-                                    HeightRequest="180">
-                                        <Image.GestureRecognizers>
-                                            <ClickGestureRecognizer Clicked="OnTapped"/>
-                                            <TapGestureRecognizer Tapped="OnTapped"/>
-                                        </Image.GestureRecognizers>
-                                    </Image>
-                                </AbsoluteLayout>
+                                    Source="{Binding Foto}" 
+                                     AbsoluteLayout.LayoutFlags="All"
+                                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                    Aspect="Fill"
+                                    VerticalOptions="Fill"
+                                    HorizontalOptions="Fill">
+                                            <Image.GestureRecognizers>
+                                                <ClickGestureRecognizer Clicked="OnTapped"/>
+                                                <TapGestureRecognizer Tapped="OnTapped"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </AbsoluteLayout>
+                                </Frame>
                                 <Label 
                                     TextColor="White"
-                                    Text="{Binding MangaNome}" 
+                                    Text="{Binding Nome}" 
                                     HorizontalTextAlignment="Center" 
                                     VerticalTextAlignment="Start">
                                     <Label.GestureRecognizers>
@@ -54,12 +58,45 @@
 
 
                     <!--Testes-->
-                    <!--<StackLayout FlexLayout.Basis="33%" Margin="2" BackgroundColor="#1a1818" HeightRequest="230" WidthRequest="120">
-                        <Image  Source="foto7.jpg" Aspect="Fill" HeightRequest="180" />
-                        <Label Text="(E)" TextColor="White"  HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
+                    <StackLayout 
+                                FlexLayout.Basis="33%" 
+                                Margin="2"
+                                BackgroundColor="#1a1818" 
+                                HeightRequest="230">
+                        <Frame HeightRequest="180" Padding="0" BackgroundColor="red">
+                            <AbsoluteLayout BackgroundColor="green">
+                                <ActivityIndicator IsRunning="{Binding Source={x:Reference image1}, Path=IsLoading }"
+                                       AbsoluteLayout.LayoutBounds="0.5,0.5,100,100" 
+                                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                                       Color="Yellow" />
+                                <Image 
+                                    x:Name="image1" 
+                                    Source="foto1" 
+                                    AbsoluteLayout.LayoutFlags="All"
+                                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                    Aspect="Fill"
+                                    VerticalOptions="Fill"
+                                    HorizontalOptions="Fill">
+                                <Image.GestureRecognizers>
+                                    <ClickGestureRecognizer Clicked="OnTapped"/>
+                                    <TapGestureRecognizer Tapped="OnTapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </AbsoluteLayout>
+                        </Frame>
+                        <Label
+                                    TextColor="White"
+                                    Text="Loucura de manga esse em" 
+                                    HorizontalTextAlignment="Center" 
+                                    VerticalTextAlignment="Start">
+                            <Label.GestureRecognizers>
+                                <ClickGestureRecognizer Clicked="OnTapped"/>
+                                <TapGestureRecognizer Tapped="OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
                     </StackLayout>
 
-                    <StackLayout FlexLayout.Basis="33%" Margin="2" BackgroundColor="#1a1818" HeightRequest="230" WidthRequest="120">
+                        <StackLayout FlexLayout.Basis="33%" Margin="2" BackgroundColor="#1a1818" HeightRequest="230" WidthRequest="120">
                         <Image Source="foto2.jpg" Aspect="Fill" HeightRequest="180"/>
                         <Label TextColor="White" Text="-Rain- (Oneshot)" HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
                     </StackLayout>
@@ -78,7 +115,7 @@
                             <Image Aspect="Fill" HeightRequest="180"/>
                         </AbsoluteLayout>
                         <Label TextColor="White" Text="12 Nin no Yasashii Koroadsasdsh..." HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
-                    </StackLayout>-->
+                    </StackLayout>
 
                 </controls:FlexView>
                 <!--<ActivityIndicator

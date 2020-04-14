@@ -1,8 +1,21 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <ApplicationIcon></ApplicationIcon>
+    <Authors>Talion Oak</Authors>
+    <Company>Talion Oak Products</Company>
+    <Product>Central Mangas</Product>
+    <Description>Um aplicativo para ler mangas online.</Description>
+    <Copyright>Talion Oak Copyright 2020</Copyright>
+    <PackageProjectUrl>https://discord.gg/8SjxKXd</PackageProjectUrl>
+    <PackageIcon>Logo.png</PackageIcon>
+    <RepositoryUrl>https://discord.gg/8SjxKXd</RepositoryUrl>
+    <RepositoryType>Chat</RepositoryType>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <NeutralLanguage>pt-BR</NeutralLanguage>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -17,21 +30,27 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Paginas\Page1.xaml">
+    <EmbeddedResource Update="Paginas\PageMangaInfo.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Paginas\UnionsMangaHud.xaml">
+    <EmbeddedResource Update="Paginas\PageUnionsMangaHud.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Testes\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Paginas\UnionsMangaHud.xaml.cs">
-      <DependentUpon>UnionsMangaHud.xaml</DependentUpon>
+    <Compile Update="Paginas\PageMangaInfo.xaml.cs">
+      <DependentUpon>PageMangaInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Paginas\PageUnionsMangaHud.xaml.cs">
+      <DependentUpon>PageUnionsMangaHud.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Users\Ailton Silva\Pictures\Logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 </Project>

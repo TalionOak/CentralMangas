@@ -1,13 +1,13 @@
-﻿using System;
+﻿using CentralMangas.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace CentralMangas.Servicos.UnionMangas
+namespace CentralMangas.Servicos
 {
-    public class UnionHud
+    public class ServUnionMangas
     {
         public async Task<List<EntidadeManga>> CarregarHudAsync()
         {
@@ -107,6 +107,46 @@ namespace CentralMangas.Servicos.UnionMangas
                 }
             }
             return finalString;
+        }
+
+        public static async Task<List<EntidadeCapitulo>> CarregarInfoManga(EntidadeManga manga)
+        {
+            HttpClient client = new HttpClient();
+
+            var response = await client.GetAsync(manga.Link);
+            var page = await response.Content.ReadAsStringAsync();
+            string decoded = System.Net.WebUtility.HtmlDecode(page);
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(decoded);
+            string ff = "col-md-8 col-xs-12";
+            var div = doc.DocumentNode.SelectNodes("//div[@class='" + ff + "']");
+            //lblTitulo.Text = _mangaEntidade.MangaNome;
+
+            //lblTituloAlternativo.Text = div[1].ChildNodes[1].ChildNodes[1].InnerText;
+            //lblDesc.Text = FormHudUnionMangas.NormalizeWhiteSpaceForLoop(div[7].ChildNodes[1].ChildNodes[1].InnerText);
+
+            var caps = doc.DocumentNode.SelectNodes("//div[@class='" + "row lancamento-linha" + "']");
+            if (caps == null) return null;
+            List<EntidadeCapitulo> capitulos = new List<EntidadeCapitulo>();
+            foreach (var item in caps)
+            {
+
+                string mangaLink = item.ChildNodes[1].ChildNodes[3].Attributes[0].Value;
+                string mangaCap = item.ChildNodes[1].ChildNodes[3].InnerText;
+                string mangaCapData = item.ChildNodes[1].ChildNodes[5].InnerText;
+
+                //button1.Text = $"{mangaCap} {mangaCapData}";
+                //button1.Tag = mangaLink;
+                //button1.MouseClick += Button1_MouseClick;
+                DateTime.TryParse(mangaCapData, out DateTime data);
+                capitulos.Add(new EntidadeCapitulo()
+                {
+                    Link = mangaLink,
+                    Nome = mangaCap,
+                    DataPublicado = data,
+                });
+            }
+            return capitulos;
         }
     }
 }
