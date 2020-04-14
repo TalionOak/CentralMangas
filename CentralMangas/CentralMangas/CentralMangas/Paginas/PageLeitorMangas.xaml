@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:controls="clr-namespace:CentralMangas.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="CentralMangas.Paginas.PageLeitorMangas">
+    <ContentPage.Content>
+        <ScrollView
+            BackgroundColor="Black">
+            <controls:PinchToZoomContainer>
+                <controls:PinchToZoomContainer.Content>
+                    <StackLayout>
+                        <Image
+                            Source="https://unionleitor.top/images/banner_scan.png" />
+                        <Image
+                            Source="https://unionleitor.top/images/banner_forum.png" />
+                        <Image
+                            Source="https://unionleitor.top/leitor/mangas/-Rain-%20(Oneshot)/00/(50).jpg" />
+                        <Image
+                            Source="https://unionleitor.top/leitor/mangas/-Rain-%20(Oneshot)/00/(51).jpg" />
+                        <Image
+                            Source="https://unionleitor.top/leitor/mangas/-Rain-%20(Oneshot)/00/(52).jpg" />
+                    </StackLayout>
+                </controls:PinchToZoomContainer.Content>
+            </controls:PinchToZoomContainer>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
