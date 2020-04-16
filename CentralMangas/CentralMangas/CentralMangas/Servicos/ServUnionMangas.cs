@@ -145,5 +145,28 @@ namespace CentralMangas.Servicos
             }
             return capitulos;
         }
+
+        public static async Task<List<string>> CarregarImagensAsync(EntidadeCapitulo entidadeCapitulo)
+        {
+            HttpClient client = new HttpClient();
+            var response = await client.GetAsync(entidadeCapitulo.Link);
+            var page = await response.Content.ReadAsStringAsync();
+            string decoded = System.Net.WebUtility.HtmlDecode(page);
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(decoded);
+            var div = doc.DocumentNode.SelectSingleNode("//div[@class='" + "col-sm-12 text-center" + "']");
+            List<string> linkImagens = new List<string>();
+            foreach (var item in div.ChildNodes)
+            {
+                if (item.Name == "img")
+                {
+
+                    string link = item.Attributes[0].Value;
+                    linkImagens.Add(link);
+                }
+            }
+
+            return linkImagens;
+        }
     }
 }

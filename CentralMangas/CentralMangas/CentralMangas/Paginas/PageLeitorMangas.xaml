@@ -4,28 +4,113 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:controls="clr-namespace:CentralMangas.Controls"
+    xmlns:cardsControls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     x:Class="CentralMangas.Paginas.PageLeitorMangas">
     <ContentPage.Content>
         <ScrollView
             BackgroundColor="Black">
-            <controls:PinchToZoomContainer>
-                <controls:PinchToZoomContainer.Content>
-                    <StackLayout>
-                        <Image
-                            Source="https://unionleitor.top/images/banner_scan.png" />
-                        <Image
-                            Source="https://unionleitor.top/images/banner_forum.png" />
-                        <Image
-                            Source="https://unionleitor.top/leitor/mangas/-Rain-%20(Oneshot)/00/(50).jpg" />
-                        <Image
-                            Source="https://unionleitor.top/leitor/mangas/-Rain-%20(Oneshot)/00/(51).jpg" />
-                        <Image
-                            Source="https://unionleitor.top/leitor/mangas/-Rain-%20(Oneshot)/00/(52).jpg" />
-                    </StackLayout>
-                </controls:PinchToZoomContainer.Content>
-            </controls:PinchToZoomContainer>
+            <StackLayout>
+                <!--<ListView
+                    x:Name="Imagens">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            -->
+                <!--<ffimage:CachedImage
+                                Source="{Binding .}"
+                                Aspect="AspectFit"
+                                CacheDuration="7">
+                            </ffimage:CachedImage>-->
+                <!--
+                            <Image Source="{Binding string}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>-->
+
+                <!--<Image
+                    BackgroundColor="Red"
+                    Source="foto1.jpg"
+                    Margin="0"
+                    Aspect="AspectFit"
+                    HorizontalOptions="CenterAndExpand" />
+                <ListView
+                x:Name="Imagens"
+                BackgroundColor="Green">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                                <StackLayout BackgroundColor="blue">
+                            <Image
+                                BackgroundColor="Red"
+                                Source="{Binding .}"
+                                Margin="0"
+                                    Aspect="AspectFit"
+                                WidthRequest="600"
+                                HeightRequest="600"
+                                    HorizontalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
+
+                <cards:CarouselView
+                    x:Name="Imagens"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <cards:CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition
+                                        Height="*" />
+                                    <RowDefinition
+                                        Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <controls:PinchToZoomContainer>
+                                    <controls:PinchToZoomContainer.Content>
+                                        <ff:CachedImage
+                                            Source="{Binding .}"
+                                            LoadingPlaceholder="loadingmanga"
+                                            ErrorPlaceholder="errormanga"
+                                            CacheDuration="1"
+                                            RetryCount="5"
+                                            RetryDelay="500"
+                                            Grid.RowSpan="2"
+                                            Aspect="Fill">
+                                        </ff:CachedImage>
+                                    </controls:PinchToZoomContainer.Content>
+                                </controls:PinchToZoomContainer>
+                                <!--<StackLayout
+                                    Grid.Row="1"
+                                    BackgroundColor="#80000000"
+                                    Padding="12">
+                                    <Label
+                                        TextColor="White"
+                                        Text="{Binding PageNumber}"
+                                        FontSize="10"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>-->
+                            </Grid>
+                        </DataTemplate>
+                    </cards:CarouselView.ItemTemplate>
+                    <cardsControls:LeftArrowControl
+                        ToFadeDuration="2500" />
+                    <cardsControls:RightArrowControl
+                        ToFadeDuration="2500" />
+                </cards:CarouselView>
+
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
+
+
+

@@ -3,7 +3,6 @@ using CentralMangas.Servicos;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -33,6 +32,8 @@ namespace CentralMangas.Paginas
         void Clicado(object sender, EventArgs args)
         {
             var f = (Button)sender;
+            var manga = (EntidadeCapitulo)f.BindingContext;
+            Navigation.PushAsync(new PageLeitorMangas(manga));
         }
     }
 }
