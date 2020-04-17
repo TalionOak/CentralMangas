@@ -1,4 +1,4 @@
-﻿using CentralMangas.Extensions;
+﻿    using CentralMangas.Extensions;
 using System;
 using Xamarin.Forms;
 

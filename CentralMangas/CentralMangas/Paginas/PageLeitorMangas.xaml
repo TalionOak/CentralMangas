@@ -3,10 +3,9 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:controls="clr-namespace:CentralMangas.Controls"
     xmlns:cardsControls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
-    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     x:Class="CentralMangas.Paginas.PageLeitorMangas">
@@ -14,52 +13,10 @@
         <ScrollView
             BackgroundColor="Black">
             <StackLayout>
-                <!--<ListView
-                    x:Name="Imagens">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            -->
-                <!--<ffimage:CachedImage
-                                Source="{Binding .}"
-                                Aspect="AspectFit"
-                                CacheDuration="7">
-                            </ffimage:CachedImage>-->
-                <!--
-                            <Image Source="{Binding string}"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->
-
-                <!--<Image
-                    BackgroundColor="Red"
-                    Source="foto1.jpg"
-                    Margin="0"
-                    Aspect="AspectFit"
-                    HorizontalOptions="CenterAndExpand" />
-                <ListView
-                x:Name="Imagens"
-                BackgroundColor="Green">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                                <StackLayout BackgroundColor="blue">
-                            <Image
-                                BackgroundColor="Red"
-                                Source="{Binding .}"
-                                Margin="0"
-                                    Aspect="AspectFit"
-                                WidthRequest="600"
-                                HeightRequest="600"
-                                    HorizontalOptions="CenterAndExpand" />
-                                </StackLayout>
-                            </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>-->
-
                 <cards:CarouselView
                     x:Name="Imagens"
                     HorizontalOptions="FillAndExpand"
+                    IsVerticalSwipeEnabled="False"
                     VerticalOptions="FillAndExpand">
                     <cards:CarouselView.ItemTemplate>
                         <DataTemplate>
@@ -72,21 +29,16 @@
                                     <RowDefinition
                                         Height="Auto" />
                                 </Grid.RowDefinitions>
-
-                                <controls:PinchToZoomContainer>
-                                    <controls:PinchToZoomContainer.Content>
                                         <ff:CachedImage
                                             Source="{Binding .}"
                                             LoadingPlaceholder="loadingmanga"
                                             ErrorPlaceholder="errormanga"
-                                            CacheDuration="1"
+                                            CacheDuration="7"
                                             RetryCount="5"
                                             RetryDelay="500"
                                             Grid.RowSpan="2"
-                                            Aspect="Fill">
+                                            Aspect="AspectFit">
                                         </ff:CachedImage>
-                                    </controls:PinchToZoomContainer.Content>
-                                </controls:PinchToZoomContainer>
                                 <!--<StackLayout
                                     Grid.Row="1"
                                     BackgroundColor="#80000000"
@@ -102,11 +54,10 @@
                         </DataTemplate>
                     </cards:CarouselView.ItemTemplate>
                     <cardsControls:LeftArrowControl
-                        ToFadeDuration="2500" />
+                        ToFadeDuration="1" />
                     <cardsControls:RightArrowControl
-                        ToFadeDuration="2500" />
+                        ToFadeDuration="1" />
                 </cards:CarouselView>
-
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

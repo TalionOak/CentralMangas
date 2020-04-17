@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    mc:Ignorable="d"
+    xmlns:local="clr-namespace:Xamarin.Forms.PinchZoomImage;assembly=Xamarin.Forms.PinchZoomImage"
+    x:Class="CentralMangas.Paginas.Teste">
+    <ContentPage.Content>
+        <local:PinchZoom>
+            <local:PinchZoom.Content>
+                <StackLayout>
+            
+                    <ff:CachedImage
+                        Source="foto1.jpg"
+                        LoadingPlaceholder="loadingmanga"
+                        ErrorPlaceholder="errormanga"
+                        CacheDuration="7"
+                        RetryCount="5"
+                        RetryDelay="500"
+                        Grid.RowSpan="2"
+                        Aspect="AspectFit">
+                    </ff:CachedImage>
+        </StackLayout>
+            </local:PinchZoom.Content>
+        </local:PinchZoom>
+    </ContentPage.Content>
+</ContentPage>
