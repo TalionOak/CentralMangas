@@ -52,6 +52,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Paginas\PageLeitorMangasTeste.xaml.cs">
+      <DependentUpon>PageLeitorMangasTeste.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Paginas\PageMangaInfo.xaml.cs">
       <DependentUpon>PageMangaInfo.xaml</DependentUpon>
     </Compile>
