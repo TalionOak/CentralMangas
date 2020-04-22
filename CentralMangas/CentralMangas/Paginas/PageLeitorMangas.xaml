@@ -9,9 +9,26 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     x:Class="CentralMangas.Paginas.PageLeitorMangas">
+    <NavigationPage.TitleView>
+        <StackLayout
+            Orientation="Horizontal"
+            Spacing="10"
+            VerticalOptions="Center">
+            <Image
+                HeightRequest="20"
+                Source="soccer.png"
+                WidthRequest="20" />
+            <Label
+                VerticalOptions="Center"
+                Text="Times do Brasil" />
+            <SearchBar
+                WidthRequest="250"
+                 />
+        </StackLayout>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView
-            BackgroundColor="Black">
+            BackgroundColor="White">
             <StackLayout>
                 <cards:CarouselView
                     x:Name="Imagens"

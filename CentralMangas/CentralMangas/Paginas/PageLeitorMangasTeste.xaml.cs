@@ -24,6 +24,7 @@ namespace CentralMangas.Paginas
             _capitulo = capitulo;
             CarregarImagens();
             BindingContext = this;
+            
         }
 
         public async void CarregarImagens()
@@ -36,6 +37,12 @@ namespace CentralMangas.Paginas
             //    Links.Add(ImageSource.FromUri(new Uri(item)));
             //}
             Imagens.ItemsSource = Texto;
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            Navigation.PopModalAsync(true);
+            return base.OnBackButtonPressed();
         }
     }
 }

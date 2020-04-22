@@ -31,7 +31,7 @@ namespace CentralMangas.Paginas
             var g = (View)sender;
             var manga = (EntidadeManga)g.BindingContext;
 
-            Navigation.PushAsync(new PageMangaInfo(manga));
+            Navigation.PushAsync(new PageMangaInfo(manga),true);
         }
     }
 }

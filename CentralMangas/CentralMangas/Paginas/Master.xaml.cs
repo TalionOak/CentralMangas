@@ -10,11 +10,12 @@ using Xamarin.Forms.Xaml;
 namespace CentralMangas.Paginas
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Teste : ContentPage
+    public partial class Master : MasterDetailPage
     {
-        public Teste()
+        public Master()
         {
             InitializeComponent();
+            Detail = new NavigationPage(new PageUnionsMangaHud());
         }
     }
 }

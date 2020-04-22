@@ -10,7 +10,7 @@ namespace CentralMangas
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new PageUnionsMangaHud());
+            MainPage = new Master();
         }
 
         protected override void OnStart()

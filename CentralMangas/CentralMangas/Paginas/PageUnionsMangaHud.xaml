@@ -4,69 +4,92 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     mc:Ignorable="d"
     xmlns:controls="clr-namespace:CentralMangas.Controls"
-    x:Class="CentralMangas.Paginas.PageUnionsMangaHud">
+    x:Class="CentralMangas.Paginas.PageUnionsMangaHud"
+    Title="UnionMangas">
+    <NavigationPage.TitleView>
+        
+        <StackLayout
+            Orientation="Horizontal"
+            Spacing="2"
+            VerticalOptions="Center">
+            <Label
+                VerticalOptions="Center"
+                Text="" />
+            <SearchBar CancelButtonColor="Red"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="T"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ScrollView>
-            <Grid>
-                <controls:FlexView
-                    Wrap="Wrap"
-                    x:Name="Flex"
-                    BackgroundColor="Black">
-                    <controls:FlexView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout
-                                FlexLayout.Basis="33%"
-                                Margin="2"
-                                BackgroundColor="#1a1818"
-                                HeightRequest="230"
-                                BindingContext="{Binding EntidadeManga}">
-                                <Frame
-                                    HeightRequest="180"
-                                    Padding="0">
-                                    <AbsoluteLayout>
-                                        <ActivityIndicator
-                                            IsRunning="{Binding Source={x:Reference image1}, Path=IsLoading }"
-                                            AbsoluteLayout.LayoutBounds="0.5,0.5,100,100"
-                                            AbsoluteLayout.LayoutFlags="PositionProportional"
-                                            Color="Yellow" />
-                                        <Image
-                                            x:Name="image1"
-                                            Source="{Binding Foto}"
-                                            AbsoluteLayout.LayoutFlags="All"
-                                            AbsoluteLayout.LayoutBounds="0,0,1,1"
-                                            Aspect="Fill"
-                                            VerticalOptions="Fill"
-                                            HorizontalOptions="Fill">
-                                            <Image.GestureRecognizers>
-                                                <ClickGestureRecognizer
-                                                    Clicked="OnTapped" />
-                                                <TapGestureRecognizer
-                                                    Tapped="OnTapped" />
-                                            </Image.GestureRecognizers>
-                                        </Image>
-                                    </AbsoluteLayout>
-                                </Frame>
-                                <Label
-                                    TextColor="White"
-                                    Text="{Binding Nome}"
-                                    HorizontalTextAlignment="Center"
-                                    VerticalTextAlignment="Start">
-                                    <Label.GestureRecognizers>
-                                        <ClickGestureRecognizer
-                                            Clicked="OnTapped" />
-                                        <TapGestureRecognizer
-                                            Tapped="OnTapped" />
-                                    </Label.GestureRecognizers>
-                                </Label>
-                            </StackLayout>
-                        </DataTemplate>
-                    </controls:FlexView.ItemTemplate>
+        <StackLayout BackgroundColor="Black">
+            
+            <ScrollView>
+
+                <Grid>
+                    <controls:FlexView
+                        Wrap="Wrap"
+                        x:Name="Flex"
+                        BackgroundColor="Black">
+                        <controls:FlexView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout
+                                    FlexLayout.Basis="33%"
+                                    Margin="2"
+                                    BackgroundColor="#1a1818"
+                                    HeightRequest="230"
+                                    BindingContext="{Binding EntidadeManga}">
+                                    <Frame
+                                        HeightRequest="180"
+                                        Padding="0">
+                                        <AbsoluteLayout>
+                                            <ActivityIndicator
+                                                IsRunning="{Binding Source={x:Reference image1}, Path=IsLoading }"
+                                                AbsoluteLayout.LayoutBounds="0.5,0.5,100,100"
+                                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                                                Color="Yellow" />
+                                            <ff:CachedImage
+                                                x:Name="image1"
+                                                Source="{Binding Foto}"
+                                                CacheDuration="7"
+                                                RetryCount="5"
+                                                RetryDelay="1000"
+                                                AbsoluteLayout.LayoutFlags="All"
+                                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                                Aspect="AspectFit"
+                                                VerticalOptions="Fill"
+                                                HorizontalOptions="Fill">
+                                                <ff:CachedImage.GestureRecognizers>
+                                                    <ClickGestureRecognizer
+                                                        Clicked="OnTapped" />
+                                                    <TapGestureRecognizer
+                                                        Tapped="OnTapped" />
+                                                </ff:CachedImage.GestureRecognizers>
+                                            </ff:CachedImage>
+                                        </AbsoluteLayout>
+                                    </Frame>
+                                    <Label
+                                        TextColor="White"
+                                        Text="{Binding Nome}"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Start">
+                                        <Label.GestureRecognizers>
+                                            <ClickGestureRecognizer
+                                                Clicked="OnTapped" />
+                                            <TapGestureRecognizer
+                                                Tapped="OnTapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </StackLayout>
+                            </DataTemplate>
+                        </controls:FlexView.ItemTemplate>
 
 
-                    <!--Testes-->
-                    <!--<StackLayout 
+                        <!--Testes-->
+                        <!--<StackLayout 
                                 FlexLayout.Basis="33%" 
                                 Margin="2"
                                 BackgroundColor="#1a1818" 
@@ -125,14 +148,15 @@
                         <Label TextColor="White" Text="12 Nin no Yasashii Koroadsasdsh..." HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
                     </StackLayout>-->
 
-                </controls:FlexView>
-                <!--<ActivityIndicator
+                    </controls:FlexView>
+                    <!--<ActivityIndicator
                          IsRunning="true"
                          x:Name="MangasCarregando"
                          AbsoluteLayout.LayoutBounds="0.5,0.5,100,100" 
                          AbsoluteLayout.LayoutFlags="PositionProportional"
                          Color="Yellow" />-->
-            </Grid>
-        </ScrollView>
+                </Grid>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

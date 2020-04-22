@@ -33,7 +33,7 @@ namespace CentralMangas.Paginas
         {
             var f = (Button)sender;
             var manga = (EntidadeCapitulo)f.BindingContext;
-            Navigation.PushAsync(new PageLeitorMangasTeste(manga));
+            Navigation.PushModalAsync(new PageLeitorMangasTeste(manga), true);
         }
     }
 }

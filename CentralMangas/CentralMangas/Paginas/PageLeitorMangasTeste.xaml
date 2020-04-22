@@ -10,83 +10,36 @@
     mc:Ignorable="d"
     x:Class="CentralMangas.Paginas.PageLeitorMangasTeste">
     <ContentPage.Content>
-        <ScrollView
-            BackgroundColor="Black">
-            <!--<cards:CarouselView
+        <ScrollView>
+            <CarouselView
                 x:Name="Imagens"
-                HorizontalOptions="FillAndExpand"
-                IsVerticalSwipeEnabled="False"
-                VerticalOptions="FillAndExpand"
-                IsHorizontalOrientation="False">
-                <cards:CarouselView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition
-                                        Height="*" />
-                                    <RowDefinition
-                                        Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <ff:CachedImage
-                                    Source="{Binding .}"
-                                    LoadingPlaceholder="loadingmanga"
-                                    ErrorPlaceholder="errormanga"
-                                    CacheDuration="7"
-                                    RetryCount="5"
-                                    RetryDelay="500"
-                                    Grid.RowSpan="2"
-                                    Aspect="AspectFit">
-                                </ff:CachedImage>
-                                <StackLayout
-                                    Grid.Row="1"
-                                    BackgroundColor="#80000000"
-                                    Padding="12">
-                                    <Label
-                                        TextColor="White"
-                                        Text="{Binding PageNumber}"
-                                        FontSize="10"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="CenterAndExpand" />
-                                </StackLayout>
-                            </Grid>
-                        </DataTemplate>
-                    </cards:CarouselView.ItemTemplate>
-                    <cardsControls:LeftArrowControl
-                        ToFadeDuration="1" />
-                    <cardsControls:RightArrowControl
-                        ToFadeDuration="1" />
-                </cards:CarouselView>-->
-
-
-                <CarouselView
-                x:Name="Imagens"
-                BackgroundColor="Red">
+                BackgroundColor="Black"
+                    >
                 <CarouselView.ItemsLayout>
                     <LinearItemsLayout
-                        Orientation="Vertical"/>
+                        Orientation="Horizontal"/>
                 </CarouselView.ItemsLayout>
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout>
-                            <Frame
-                                HorizontalOptions="Center"
-                                VerticalOptions="CenterAndExpand"
-                                BackgroundColor="Blue"
-                                Margin="0"
-                                Padding="0">
-                                <ff:CachedImage
-                                    Source="{Binding .}"
-                                    LoadingPlaceholder="loadingmanga"
-                                    ErrorPlaceholder="errormanga"
-                                    CacheDuration="7"
-                                    RetryCount="5"
-                                    RetryDelay="500"
-                                    Aspect="AspectFit">
-                                </ff:CachedImage>
-                            </Frame>
-                        </StackLayout>
+                        <Grid
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <ff:CachedImage
+                                Source="{Binding .}"
+                                CacheDuration="7"
+                                RetryCount="5"
+                                RetryDelay="1000"
+                                Aspect="AspectFit"
+                                Margin="2">
+                            </ff:CachedImage>
+                        </Grid>
                     </DataTemplate>
                 </CarouselView.ItemTemplate>
             </CarouselView>
