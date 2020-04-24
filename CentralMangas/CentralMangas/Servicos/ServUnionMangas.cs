@@ -1,4 +1,5 @@
 ﻿using CentralMangas.Entidades;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -9,7 +10,7 @@ namespace CentralMangas.Servicos
 {
     public class ServUnionMangas
     {
-        public async Task<List<EntidadeManga>> CarregarHudAsync()
+        public static async Task<List<EntidadeManga>> CarregarHudAsync()
         {
             HttpClient client = new HttpClient();
 
@@ -168,5 +169,39 @@ namespace CentralMangas.Servicos
 
             return linkImagens;
         }
+
+        public static async Task<List<EntidadeManga>> PesquisarManga(string pesquisa)
+        {
+            HttpClient client = new HttpClient();
+            var response = await client.GetAsync($"https://unionleitor.top/assets/busca.php?q={pesquisa}");
+            var page = await response.Content.ReadAsStringAsync();
+            var json = JsonConvert.DeserializeObject<Pesquisa>(page);
+            List<EntidadeManga> lista = new List<EntidadeManga>();
+            foreach (var item in json.Itens)
+            {
+                lista.Add(new EntidadeManga(item.Titulo, $"https://unionleitor.top/perfil-manga/{item.Url}", item.Imagem));
+            }
+
+            return lista;
+        }
+
+
+
+        private class Pesquisa
+        {
+            [JsonProperty("items")]
+            public List<Item> Itens { get; set; }
+        }
+
+        public class Item
+        {
+            public Uri Imagem { get; set; }
+            public string Titulo { get; set; }
+            public string Url { get; set; }
+            public string Autor { get; set; }
+            public string Artista { get; set; }
+            public long Capitulo { get; set; }
+        }
+
     }
 }

@@ -4,17 +4,67 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:conteudo="clr-namespace:CentralMangas.Paginas"
     mc:Ignorable="d"
-    x:Class="CentralMangas.Paginas.Master"
-    Title="Master">
+    x:Class="CentralMangas.Paginas.Master">
+    <MasterDetailPage.Resources>
+        <Style TargetType="Button">
+            <Setter
+                Property="Margin"
+                Value="0" />
+            <Setter
+                Property="Padding"
+                Value="0" />
+            <Setter
+                Property="TextColor"
+                Value="White" />
+            <Setter
+                Property="BackgroundColor"
+                Value="Transparent" />
+            <Setter
+                Property="HorizontalOptions"
+                Value="FillAndExpand" />
+        </Style>
+        <Style TargetType="Frame">
+            <Setter
+                Property="HeightRequest"
+                Value="1" />
+            <Setter
+                Property="Padding"
+                Value="0" />
+            <Setter
+                Property="Margin"
+                Value="0" />
+            <Setter
+                Property="BackgroundColor"
+                Value="#202224" />
+        </Style>
+    </MasterDetailPage.Resources>
     <MasterDetailPage.Master>
-        <ContentPage
-            Title="Menu">
-            <StackLayout>
+        <ContentPage Title="Inicio">
+            <StackLayout BackgroundColor="Black"
+                         Spacing="0">
+                <Frame
+                    HorizontalOptions="CenterAndExpand"
+                    HeightRequest="100"
+                    Margin="0,40"
+                    BackgroundColor="Transparent">
+                <ff:CachedImage 
+                    Source="centralmangas"/>
+                </Frame>
+                
+                <Frame />
                 <Button
                     Text="Acesse o nosso Discord"
-                    BackgroundColor="Transparent" />
+                    Clicked="AcessarDiscord"
+                    />
+                
+                <Frame />
+                <Button
+                    Text="Configurações"
+                    Clicked="AcessarConfig" />
+
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

@@ -21,11 +21,16 @@ namespace CentralMangas.Controls
         {
             var self = (bindable as FlexView);
             var items = (newValue as IList);
-            foreach (var item in items)
+            if (items != null)
+                foreach (var item in items)
+                {
+                    var view = (View)self.ItemTemplate.CreateContent();
+                    view.BindingContext = item;
+                    self.Children.Add(view);
+                }
+            else
             {
-                var view = (View)self.ItemTemplate.CreateContent();
-                view.BindingContext = item;
-                self.Children.Add(view);
+                self.Children.Clear();
             }
         }
     }

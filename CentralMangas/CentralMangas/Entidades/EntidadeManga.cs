@@ -26,6 +26,14 @@ namespace CentralMangas.Entidades
             Capitulos = new List<EntidadeCapitulo>();
         }
 
+        public EntidadeManga(string nome, string mangaLink, Uri mangaFotoLink)
+        {
+            Nome = nome;
+            Link = mangaLink;
+            Foto = ImageSource.FromUri(mangaFotoLink);
+            Capitulos = new List<EntidadeCapitulo>();
+        }
+
         public void AdicionarCapitulo(string nome, string link, DateTime dataPublicado)
         {
             Capitulos.Add(new EntidadeCapitulo()

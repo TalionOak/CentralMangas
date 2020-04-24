@@ -8,31 +8,23 @@
     mc:Ignorable="d"
     xmlns:controls="clr-namespace:CentralMangas.Controls"
     x:Class="CentralMangas.Paginas.PageUnionsMangaHud"
-    Title="UnionMangas">
-    <NavigationPage.TitleView>
-        
-        <StackLayout
-            Orientation="Horizontal"
-            Spacing="2"
-            VerticalOptions="Center">
-            <Label
-                VerticalOptions="Center"
-                Text="" />
-            <SearchBar CancelButtonColor="Red"/>
-        </StackLayout>
-    </NavigationPage.TitleView>
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="T"/>
-    </ContentPage.ToolbarItems>
+    Title="Union Mangas">
+    
     <ContentPage.Content>
         <StackLayout BackgroundColor="Black">
-            
+            <SearchBar
+                TextColor="White"
+                BackgroundColor="Cyan"
+                CancelButtonColor="Black"
+                Placeholder="Pesquisar"
+                SearchButtonPressed="PesquisarMangaButtonPressed"
+                TextChanged="PesquisarMangaTextChanged"/>
             <ScrollView>
 
                 <Grid>
                     <controls:FlexView
                         Wrap="Wrap"
-                        x:Name="Flex"
+                        x:Name="ListaMangas"
                         BackgroundColor="Black">
                         <controls:FlexView.ItemTemplate>
                             <DataTemplate>
