@@ -16,10 +16,10 @@ namespace CentralMangas.Paginas
         {
             InitializeComponent();
             _manga = manga;
-            Carregar();
             MangaNome.Text = _manga.Nome;
             MangaFoto.Source = _manga.Foto;
             MangaDescricao.Text = _manga.ToolTip;
+            Carregar();
         }
 
         public async void Carregar()

@@ -2,6 +2,7 @@
 using CentralMangas.Servicos;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,22 +12,23 @@ namespace CentralMangas.Paginas
     public partial class PageUnionsMangaHud : ContentPage
     {
 
-        private List<EntidadeManga> mangasHud = new List<EntidadeManga>();
-        private List<EntidadeManga> mangasPesquisados = new List<EntidadeManga>();
+        List<EntidadeManga> mangasHud = new List<EntidadeManga>();
+        bool atualizou;
         public PageUnionsMangaHud()
         {
             InitializeComponent();
             CarregarMangasHud();
+            atualizou = false;
+            CarregandoIndicador.IsRunning = true;
+            CarregandoIndicador.IsVisible = true;
         }
 
         public async void CarregarMangasHud()
         {
-            if (!DesignMode.IsDesignModeEnabled)
-            {
-                //MangasCarregando.IsRunning = false;
-                mangasHud = await ServUnionMangas.CarregarHudAsync();
-                ListaMangas.ItemsSource = mangasHud;
-            }
+            //MangasCarregando.IsRunning = false;
+            mangasHud = await ServUnionMangas.CarregarHudAsync(ListaMangas);
+            CarregandoIndicador.IsVisible = false;
+            atualizou = true;
         }
 
         public void OnTapped(object sender, EventArgs e)
@@ -39,27 +41,34 @@ namespace CentralMangas.Paginas
 
         public async void PesquisarMangaTextChanged(object sender, TextChangedEventArgs args)
         {
-            mangasPesquisados.Clear();
-            ListaMangas.ItemsSource = null;
             if (string.IsNullOrEmpty(args.NewTextValue))
             {
-                ListaMangas.ItemsSource = mangasHud;
-                return;
+                if (atualizou == false)
+                {
+                    CarregandoIndicador.IsVisible = true;
+                    ListaMangas.Limpar();
+                    foreach (var item in mangasHud)
+                    {
+                        ListaMangas.AdicionarManga(item);
+                    }
+                    CarregandoIndicador.IsVisible = false;
+                }
             }
-
-            ListaMangas.ItemsSource = await ServUnionMangas.PesquisarManga(args.NewTextValue);
+            await Task.CompletedTask;
         }
 
         public async void PesquisarMangaButtonPressed(object sender, EventArgs args)
         {
-            mangasPesquisados.Clear();
-            ListaMangas.ItemsSource.Clear();
+            ListaMangas.Limpar();
+            CarregandoIndicador.IsVisible = true;
+            atualizou = false;
             if (string.IsNullOrEmpty(((SearchBar)sender).Text))
             {
                 ListaMangas.ItemsSource = mangasHud;
                 return;
             }
-            ListaMangas.ItemsSource = await ServUnionMangas.PesquisarManga(((SearchBar)sender).Text);
+            await ServUnionMangas.PesquisarManga(((SearchBar)sender).Text, ListaMangas);
+            CarregandoIndicador.IsVisible = false;
         }
     }
 }

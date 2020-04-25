@@ -1,4 +1,5 @@
-﻿using CentralMangas.Entidades;
+﻿using CentralMangas.Controls;
+using CentralMangas.Entidades;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace CentralMangas.Servicos
 {
     public class ServUnionMangas
     {
-        public static async Task<List<EntidadeManga>> CarregarHudAsync()
+        public static async Task<List<EntidadeManga>> CarregarHudAsync(FlexView listaMangas)
         {
             HttpClient client = new HttpClient();
 
@@ -29,9 +30,9 @@ namespace CentralMangas.Servicos
                 string tooltip = NormalizeWhiteSpaceForLoop(item.ChildNodes[6].InnerText).Substring(1);
                 string mangalink = item.ChildNodes[1].Attributes[0].Value;
 
-                //Cria os valores.
-                //CriarComponente(new MangaEntidade(nome, mangalink, linkImagem, tooltip));
-                lista.Add(new EntidadeManga(nome, mangalink, linkImagem, tooltip));
+                EntidadeManga e = new EntidadeManga(nome, mangalink, linkImagem, tooltip);
+                lista.Add(e);
+                listaMangas.AdicionarManga(e);
             }
 
             return lista;
@@ -170,22 +171,18 @@ namespace CentralMangas.Servicos
             return linkImagens;
         }
 
-        public static async Task<List<EntidadeManga>> PesquisarManga(string pesquisa)
+        public static async Task PesquisarManga(string pesquisa, FlexView listaMangas)
         {
             HttpClient client = new HttpClient();
             var response = await client.GetAsync($"https://unionleitor.top/assets/busca.php?q={pesquisa}");
             var page = await response.Content.ReadAsStringAsync();
             var json = JsonConvert.DeserializeObject<Pesquisa>(page);
-            List<EntidadeManga> lista = new List<EntidadeManga>();
             foreach (var item in json.Itens)
             {
-                lista.Add(new EntidadeManga(item.Titulo, $"https://unionleitor.top/perfil-manga/{item.Url}", item.Imagem));
+                EntidadeManga e = new EntidadeManga(item.Titulo, $"https://unionleitor.top/perfil-manga/{item.Url}", item.Imagem);
+                listaMangas.AdicionarManga(e);
             }
-
-            return lista;
         }
-
-
 
         private class Pesquisa
         {
@@ -202,6 +199,5 @@ namespace CentralMangas.Servicos
             public string Artista { get; set; }
             public long Capitulo { get; set; }
         }
-
     }
 }

@@ -11,18 +11,15 @@
         <ScrollView
             BackgroundColor="Black">
             <StackLayout>
-                <Frame
-                    Padding="1"
-                    HorizontalOptions="CenterAndExpand">
                     <Image
                         x:Name="MangaFoto"
                         Aspect="Fill"
                         HeightRequest="200"
                         WidthRequest="160"
                         HorizontalOptions="CenterAndExpand" />
-                </Frame>
                 <Frame
                     Padding="0"
+                    HeightRequest="2"
                     BackgroundColor="Black">
                     <Label
                         x:Name="MangaNome"
@@ -30,6 +27,7 @@
                         HorizontalOptions="CenterAndExpand" />
                 </Frame>
                 <Frame
+                    HeightRequest="100"
                     Padding="0"
                     BackgroundColor="Black">
                     <Label

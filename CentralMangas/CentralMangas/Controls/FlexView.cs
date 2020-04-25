@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using CentralMangas.Entidades;
+using System.Collections;
+using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace CentralMangas.Controls
@@ -21,17 +23,24 @@ namespace CentralMangas.Controls
         {
             var self = (bindable as FlexView);
             var items = (newValue as IList);
-            if (items != null)
-                foreach (var item in items)
-                {
-                    var view = (View)self.ItemTemplate.CreateContent();
-                    view.BindingContext = item;
-                    self.Children.Add(view);
-                }
-            else
+            foreach (var item in items)
             {
-                self.Children.Clear();
+                var view = (View)self.ItemTemplate.CreateContent();
+                view.BindingContext = item;
+                self.Children.Add(view);
             }
+        }
+
+        public void AdicionarManga(EntidadeManga manga)
+        {
+            var view = (View)ItemTemplate.CreateContent();
+            view.BindingContext = manga;
+            Children.Add(view);
+        }
+
+        public void Limpar()
+        {
+            Children.Clear();
         }
     }
 }

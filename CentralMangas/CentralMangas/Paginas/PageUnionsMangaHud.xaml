@@ -8,19 +8,23 @@
     mc:Ignorable="d"
     xmlns:controls="clr-namespace:CentralMangas.Controls"
     x:Class="CentralMangas.Paginas.PageUnionsMangaHud"
-    Title="Union Mangas">
-    
+    Title="Union Mangas" >
+
     <ContentPage.Content>
-        <StackLayout BackgroundColor="Black">
+        <StackLayout
+            BackgroundColor="Black">
             <SearchBar
                 TextColor="White"
-                BackgroundColor="Cyan"
-                CancelButtonColor="Black"
-                Placeholder="Pesquisar"
+                BackgroundColor="Black"
+                CancelButtonColor="White"
+                PlaceholderColor="#6e6e6e"
+                Placeholder="Pesquisar mangas, novels..."
                 SearchButtonPressed="PesquisarMangaButtonPressed"
-                TextChanged="PesquisarMangaTextChanged"/>
+                TextChanged="PesquisarMangaTextChanged" />
+            <ActivityIndicator
+                x:Name="CarregandoIndicador"
+                Color="DeepPink" />
             <ScrollView>
-
                 <Grid>
                     <controls:FlexView
                         Wrap="Wrap"
@@ -51,7 +55,7 @@
                                                 RetryDelay="1000"
                                                 AbsoluteLayout.LayoutFlags="All"
                                                 AbsoluteLayout.LayoutBounds="0,0,1,1"
-                                                Aspect="AspectFit"
+                                                Aspect="AspectFill"
                                                 VerticalOptions="Fill"
                                                 HorizontalOptions="Fill">
                                                 <ff:CachedImage.GestureRecognizers>
@@ -78,75 +82,7 @@
                                 </StackLayout>
                             </DataTemplate>
                         </controls:FlexView.ItemTemplate>
-
-
-                        <!--Testes-->
-                        <!--<StackLayout 
-                                FlexLayout.Basis="33%" 
-                                Margin="2"
-                                BackgroundColor="#1a1818" 
-                                HeightRequest="230">
-                        <Frame HeightRequest="180" Padding="0" BackgroundColor="red">
-                            <AbsoluteLayout BackgroundColor="green">
-                                <ActivityIndicator IsRunning="{Binding Source={x:Reference image1}, Path=IsLoading }"
-                                       AbsoluteLayout.LayoutBounds="0.5,0.5,100,100" 
-                                       AbsoluteLayout.LayoutFlags="PositionProportional"
-                                       Color="Yellow" />
-                                <Image 
-                                    x:Name="image1" 
-                                    Source="foto1" 
-                                    AbsoluteLayout.LayoutFlags="All"
-                                    AbsoluteLayout.LayoutBounds="0,0,1,1"
-                                    Aspect="Fill"
-                                    VerticalOptions="Fill"
-                                    HorizontalOptions="Fill">
-                                <Image.GestureRecognizers>
-                                    <ClickGestureRecognizer Clicked="OnTapped"/>
-                                    <TapGestureRecognizer Tapped="OnTapped"/>
-                                </Image.GestureRecognizers>
-                            </Image>
-                        </AbsoluteLayout>
-                        </Frame>
-                        <Label
-                                    TextColor="White"
-                                    Text="Loucura de manga esse em" 
-                                    HorizontalTextAlignment="Center" 
-                                    VerticalTextAlignment="Start">
-                            <Label.GestureRecognizers>
-                                <ClickGestureRecognizer Clicked="OnTapped"/>
-                                <TapGestureRecognizer Tapped="OnTapped"/>
-                            </Label.GestureRecognizers>
-                        </Label>
-                    </StackLayout>
-
-                        <StackLayout FlexLayout.Basis="33%" Margin="2" BackgroundColor="#1a1818" HeightRequest="230" WidthRequest="120">
-                        <Image Source="foto2.jpg" Aspect="Fill" HeightRequest="180"/>
-                        <Label TextColor="White" Text="-Rain- (Oneshot)" HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
-                    </StackLayout>
-
-                    <StackLayout FlexLayout.Basis="33%" Margin="2" BackgroundColor="#1a1818" HeightRequest="230" WidthRequest="120">
-                        <Image Source="foto3.jpg" Aspect="Fill" HeightRequest="180"/>
-                        <Label TextColor="White" Text="1-nen A-Gumi no Monster" HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
-                    </StackLayout>
-
-                    <StackLayout FlexLayout.Basis="33%" Padding="2" BackgroundColor="#1a1818" HeightRequest="230" WidthRequest="120">
-                        <AbsoluteLayout>
-                            <ActivityIndicator IsRunning="true"
-                         AbsoluteLayout.LayoutBounds="0.5,0.5,100,100" 
-                         AbsoluteLayout.LayoutFlags="PositionProportional"
-                         Color="Yellow" />
-                            <Image Aspect="Fill" HeightRequest="180"/>
-                        </AbsoluteLayout>
-                        <Label TextColor="White" Text="12 Nin no Yasashii Koroadsasdsh..." HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
-                    </StackLayout>-->
-
                     </controls:FlexView>
-                    <!--<ActivityIndicator
-                         IsRunning="true"
-                         x:Name="MangasCarregando"
-                         AbsoluteLayout.LayoutBounds="0.5,0.5,100,100" 
-                         AbsoluteLayout.LayoutFlags="PositionProportional"
-                         Color="Yellow" />-->
                 </Grid>
             </ScrollView>
         </StackLayout>
