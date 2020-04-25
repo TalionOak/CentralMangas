@@ -47,7 +47,7 @@
     <EmbeddedResource Update="Paginas\PageMangaInfo.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Paginas\PageUnionsMangaHud.xaml">
+    <EmbeddedResource Update="Scans\UnionMangas\PageUnionsMangaHud.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -59,8 +59,12 @@
     <Compile Update="Paginas\PageMangaInfo.xaml.cs">
       <DependentUpon>PageMangaInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Paginas\PageUnionsMangaHud.xaml.cs">
+    <Compile Update="Scans\UnionMangas\PageUnionsMangaHud.xaml.cs">
       <DependentUpon>PageUnionsMangaHud.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Servicos\" />
   </ItemGroup>
 </Project>

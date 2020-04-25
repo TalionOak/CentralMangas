@@ -1,12 +1,12 @@
 ﻿using CentralMangas.Entidades;
-using CentralMangas.Servicos;
+using CentralMangas.Paginas;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace CentralMangas.Paginas
+namespace CentralMangas.Scans.UnionMangas
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PageUnionsMangaHud : ContentPage
@@ -26,7 +26,7 @@ namespace CentralMangas.Paginas
         public async void CarregarMangasHud()
         {
             //MangasCarregando.IsRunning = false;
-            mangasHud = await ServUnionMangas.CarregarHudAsync(ListaMangas);
+            mangasHud = await ServidorUnionMangas.CarregarHudAsync(ListaMangas);
             CarregandoIndicador.IsVisible = false;
             atualizou = true;
         }
@@ -67,7 +67,7 @@ namespace CentralMangas.Paginas
                 ListaMangas.ItemsSource = mangasHud;
                 return;
             }
-            await ServUnionMangas.PesquisarManga(((SearchBar)sender).Text, ListaMangas);
+            await ServidorUnionMangas.PesquisarManga(((SearchBar)sender).Text, ListaMangas);
             CarregandoIndicador.IsVisible = false;
         }
     }

@@ -7,9 +7,9 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace CentralMangas.Servicos
+namespace CentralMangas.Scans.UnionMangas
 {
-    public class ServUnionMangas
+    public class ServidorUnionMangas
     {
         public static async Task<List<EntidadeManga>> CarregarHudAsync(FlexView listaMangas)
         {
