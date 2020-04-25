@@ -6,13 +6,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     mc:Ignorable="d"
-    xmlns:controls="clr-namespace:CentralMangas.Controls"
     x:Class="CentralMangas.Scans.UnionMangas.PageUnionsMangaHud"
-    Title="Union Mangas" >
+    Title="Union Mangas">
 
     <ContentPage.Content>
         <StackLayout
             BackgroundColor="Black">
+
             <SearchBar
                 TextColor="White"
                 BackgroundColor="Black"
@@ -21,70 +21,82 @@
                 Placeholder="Pesquisar mangas, novels..."
                 SearchButtonPressed="PesquisarMangaButtonPressed"
                 TextChanged="PesquisarMangaTextChanged" />
+
             <ActivityIndicator
                 x:Name="CarregandoIndicador"
                 Color="DeepPink" />
-            <ScrollView>
-                <Grid>
-                    <controls:FlexView
-                        Wrap="Wrap"
-                        x:Name="ListaMangas"
-                        BackgroundColor="Black">
-                        <controls:FlexView.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout
-                                    FlexLayout.Basis="33%"
-                                    Margin="2"
-                                    BackgroundColor="#1a1818"
-                                    HeightRequest="230"
-                                    BindingContext="{Binding EntidadeManga}">
-                                    <Frame
-                                        HeightRequest="180"
-                                        Padding="0">
-                                        <AbsoluteLayout>
-                                            <ActivityIndicator
-                                                IsRunning="{Binding Source={x:Reference image1}, Path=IsLoading }"
-                                                AbsoluteLayout.LayoutBounds="0.5,0.5,100,100"
-                                                AbsoluteLayout.LayoutFlags="PositionProportional"
-                                                Color="Yellow" />
-                                            <ff:CachedImage
-                                                x:Name="image1"
-                                                Source="{Binding Foto}"
-                                                CacheDuration="7"
-                                                RetryCount="5"
-                                                RetryDelay="1000"
-                                                AbsoluteLayout.LayoutFlags="All"
-                                                AbsoluteLayout.LayoutBounds="0,0,1,1"
-                                                Aspect="AspectFill"
-                                                VerticalOptions="Fill"
-                                                HorizontalOptions="Fill">
-                                                <ff:CachedImage.GestureRecognizers>
-                                                    <ClickGestureRecognizer
-                                                        Clicked="OnTapped" />
-                                                    <TapGestureRecognizer
-                                                        Tapped="OnTapped" />
-                                                </ff:CachedImage.GestureRecognizers>
-                                            </ff:CachedImage>
-                                        </AbsoluteLayout>
-                                    </Frame>
+
+            <CollectionView
+                x:Name="ListaMangas">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        VerticalItemSpacing="4"
+                        HorizontalItemSpacing="4"
+                        Orientation="Vertical"
+                        Span="3" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            CornerRadius="5"
+                            HasShadow="True"
+                            IsClippedToBounds="True"
+                            HeightRequest="170"
+                            Padding="0"
+                            BackgroundColor="#1a1818"
+                            BindingContext="{Binding EntidadeManga}">
+
+                            <Frame.GestureRecognizers>
+
+                                <ClickGestureRecognizer
+                                    Clicked="OnTapped" />
+
+                                <TapGestureRecognizer
+                                    Tapped="OnTapped" />
+
+                            </Frame.GestureRecognizers>
+
+                            <AbsoluteLayout>
+
+                                <ActivityIndicator
+                                    IsRunning="{Binding Source={x:Reference image}, Path=IsLoading }"
+                                    AbsoluteLayout.LayoutBounds="0.5,0.5,100,100"
+                                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                                    Color="LightPink" />
+
+                                <ff:CachedImage
+                                    x:Name="image"
+                                    Source="{Binding Foto}"
+                                    RetryCount="5"
+                                    DownsampleToViewSize="True"
+                                    RetryDelay="1000"
+                                    AbsoluteLayout.LayoutFlags="All"
+                                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                    Aspect="AspectFill">
+                                </ff:CachedImage>
+                                <Frame
+                                    Opacity="0.80"
+                                    AbsoluteLayout.LayoutFlags="All"
+                                    AbsoluteLayout.LayoutBounds=".5,1,1,.18"
+                                    Padding="0"
+                                    CornerRadius="0">
                                     <Label
                                         TextColor="White"
+                                        FontAttributes="Bold"
                                         Text="{Binding Nome}"
                                         HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Start">
-                                        <Label.GestureRecognizers>
-                                            <ClickGestureRecognizer
-                                                Clicked="OnTapped" />
-                                            <TapGestureRecognizer
-                                                Tapped="OnTapped" />
-                                        </Label.GestureRecognizers>
+                                        VerticalTextAlignment="Center">
                                     </Label>
-                                </StackLayout>
-                            </DataTemplate>
-                        </controls:FlexView.ItemTemplate>
-                    </controls:FlexView>
-                </Grid>
-            </ScrollView>
+                                </Frame>
+
+                            </AbsoluteLayout>
+                        </Frame>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

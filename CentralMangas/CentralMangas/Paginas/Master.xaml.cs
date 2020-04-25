@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CentralMangas.Scans.UnionMangas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,9 +24,14 @@ namespace CentralMangas.Paginas
             await Launcher.OpenAsync("https://discord.gg/GH6GwRx");
         }
 
-        private async void AcessarConfig(object sender, EventArgs args)
+        private void AcessarConfig(object sender, EventArgs args)
         {
             DisplayAlert("Em criação", "Estamos criando uma configuração que seja agradavél para você.", "Aguardarei");
+        }
+
+        private void AcessarScans(object sender, EventArgs args)
+        {
+            DisplayAlert("Em criação", "Estamos procurando mais scans para você.", "Aguardarei");
         }
     }
 }

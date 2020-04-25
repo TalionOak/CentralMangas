@@ -11,7 +11,7 @@ namespace CentralMangas.Scans.UnionMangas
 {
     public class ServidorUnionMangas
     {
-        public static async Task<List<EntidadeManga>> CarregarHudAsync(FlexView listaMangas)
+        public static async Task<List<EntidadeManga>> CarregarHudAsync()
         {
             HttpClient client = new HttpClient();
 
@@ -26,13 +26,12 @@ namespace CentralMangas.Scans.UnionMangas
             foreach (var item in div)
             {
                 string linkImagem = Regex.Match(item.ChildNodes[1].InnerHtml, @"(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)", RegexOptions.IgnoreCase).Value;
-                string nome = SpliceText(item.ChildNodes[4].InnerText, 10);
+                string nome = SpliceText(item.ChildNodes[4].InnerText, 10).Replace("/n","").Trim();
                 string tooltip = NormalizeWhiteSpaceForLoop(item.ChildNodes[6].InnerText).Substring(1);
                 string mangalink = item.ChildNodes[1].Attributes[0].Value;
 
                 EntidadeManga e = new EntidadeManga(nome, mangalink, linkImagem, tooltip);
                 lista.Add(e);
-                listaMangas.AdicionarManga(e);
             }
 
             return lista;
@@ -171,17 +170,19 @@ namespace CentralMangas.Scans.UnionMangas
             return linkImagens;
         }
 
-        public static async Task PesquisarManga(string pesquisa, FlexView listaMangas)
+        public static async Task<List<EntidadeManga>> PesquisarManga(string pesquisa)
         {
             HttpClient client = new HttpClient();
             var response = await client.GetAsync($"https://unionleitor.top/assets/busca.php?q={pesquisa}");
             var page = await response.Content.ReadAsStringAsync();
             var json = JsonConvert.DeserializeObject<Pesquisa>(page);
+            List<EntidadeManga> mangas = new List<EntidadeManga>();
             foreach (var item in json.Itens)
             {
                 EntidadeManga e = new EntidadeManga(item.Titulo, $"https://unionleitor.top/perfil-manga/{item.Url}", item.Imagem);
-                listaMangas.AdicionarManga(e);
+                mangas.Add(e);
             }
+            return mangas;
         }
 
         private class Pesquisa

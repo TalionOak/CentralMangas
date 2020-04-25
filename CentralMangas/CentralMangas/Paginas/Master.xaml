@@ -5,7 +5,6 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:conteudo="clr-namespace:CentralMangas.Paginas"
     mc:Ignorable="d"
     x:Class="CentralMangas.Paginas.Master">
     <MasterDetailPage.Resources>
@@ -53,7 +52,12 @@
                 <ff:CachedImage 
                     Source="centralmangas"/>
                 </Frame>
-                
+
+                <Frame />
+                <Button
+                    Text="Scans"
+                    Clicked="AcessarScans" />
+
                 <Frame />
                 <Button
                     Text="Acesse o nosso Discord"

@@ -1,15 +1,11 @@
 ﻿using CentralMangas.Entidades;
-using CentralMangas.Servicos;
-using System;
+using CentralMangas.Scans.UnionMangas;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace CentralMangas.Paginas
+namespace CentralMangas.Scans.UnionMangas
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PageLeitorMangasTeste : ContentPage
@@ -29,7 +25,7 @@ namespace CentralMangas.Paginas
 
         public async void CarregarImagens()
         {
-            var f = await ServUnionMangas.CarregarImagensAsync(_capitulo);
+            var f = await ServidorUnionMangas.CarregarImagensAsync(_capitulo);
             Texto = f;
             //Links = new List<ImageSource>();
             //foreach (var item in f)

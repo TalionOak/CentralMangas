@@ -25,8 +25,8 @@ namespace CentralMangas.Scans.UnionMangas
 
         public async void CarregarMangasHud()
         {
-            //MangasCarregando.IsRunning = false;
-            mangasHud = await ServidorUnionMangas.CarregarHudAsync(ListaMangas);
+            mangasHud = await ServidorUnionMangas.CarregarHudAsync();
+            ListaMangas.ItemsSource = mangasHud;
             CarregandoIndicador.IsVisible = false;
             atualizou = true;
         }
@@ -46,11 +46,8 @@ namespace CentralMangas.Scans.UnionMangas
                 if (atualizou == false)
                 {
                     CarregandoIndicador.IsVisible = true;
-                    ListaMangas.Limpar();
-                    foreach (var item in mangasHud)
-                    {
-                        ListaMangas.AdicionarManga(item);
-                    }
+                    ListaMangas.ItemsSource = null;
+                    ListaMangas.ItemsSource = mangasHud;
                     CarregandoIndicador.IsVisible = false;
                 }
             }
@@ -59,7 +56,7 @@ namespace CentralMangas.Scans.UnionMangas
 
         public async void PesquisarMangaButtonPressed(object sender, EventArgs args)
         {
-            ListaMangas.Limpar();
+            ListaMangas.ItemsSource = null;
             CarregandoIndicador.IsVisible = true;
             atualizou = false;
             if (string.IsNullOrEmpty(((SearchBar)sender).Text))
@@ -67,7 +64,7 @@ namespace CentralMangas.Scans.UnionMangas
                 ListaMangas.ItemsSource = mangasHud;
                 return;
             }
-            await ServidorUnionMangas.PesquisarManga(((SearchBar)sender).Text, ListaMangas);
+            ListaMangas.ItemsSource = await ServidorUnionMangas.PesquisarManga(((SearchBar)sender).Text);
             CarregandoIndicador.IsVisible = false;
         }
     }

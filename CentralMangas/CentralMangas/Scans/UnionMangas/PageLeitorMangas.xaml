@@ -8,7 +8,7 @@
     xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    x:Class="CentralMangas.Paginas.PageLeitorMangas">
+    x:Class="CentralMangas.Scans.UnionMangas.PageLeitorMangas">
     <NavigationPage.TitleView>
         <StackLayout
             Orientation="Horizontal"

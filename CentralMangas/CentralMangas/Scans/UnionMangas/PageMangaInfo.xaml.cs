@@ -1,12 +1,10 @@
 ﻿using CentralMangas.Entidades;
-using CentralMangas.Servicos;
+using CentralMangas.Scans.UnionMangas;
 using System;
-using System.Collections.Generic;
-using System.Net.Http;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace CentralMangas.Paginas
+namespace CentralMangas.Scans.UnionMangas
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PageMangaInfo : ContentPage
@@ -24,7 +22,7 @@ namespace CentralMangas.Paginas
 
         public async void Carregar()
         {
-            _manga.Capitulos = await ServUnionMangas.CarregarInfoManga(_manga);
+            _manga.Capitulos = await ServidorUnionMangas.CarregarInfoManga(_manga);
             CarregandoCapitulos.IsRunning = false;
             Capitulos.ItemsSource = _manga.Capitulos;
         }
