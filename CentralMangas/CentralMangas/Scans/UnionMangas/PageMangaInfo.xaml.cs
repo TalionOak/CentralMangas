@@ -15,8 +15,8 @@ namespace CentralMangas.Scans.UnionMangas
             InitializeComponent();
             _manga = manga;
             MangaNome.Text = _manga.Nome;
-            MangaFoto.Source = _manga.Foto;
-            MangaDescricao.Text = _manga.ToolTip;
+            MangaFoto.Source = _manga.LinkFoto;
+            Title = MangaNome.Text;
             Carregar();
         }
 
@@ -31,7 +31,7 @@ namespace CentralMangas.Scans.UnionMangas
         {
             var f = (Button)sender;
             var manga = (EntidadeCapitulo)f.BindingContext;
-            Navigation.PushModalAsync(new PageLeitorMangasTeste(manga), true);
+            Navigation.PushModalAsync(new PageLeitorMangas(manga), true);
         }
     }
 }

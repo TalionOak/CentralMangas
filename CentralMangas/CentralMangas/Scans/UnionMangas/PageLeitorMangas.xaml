@@ -3,80 +3,66 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:cardsControls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
     xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
     xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     x:Class="CentralMangas.Scans.UnionMangas.PageLeitorMangas">
-    <NavigationPage.TitleView>
-        <StackLayout
-            Orientation="Horizontal"
-            Spacing="10"
-            VerticalOptions="Center">
-            <Image
-                HeightRequest="20"
-                Source="soccer.png"
-                WidthRequest="20" />
-            <Label
-                VerticalOptions="Center"
-                Text="Times do Brasil" />
-            <SearchBar
-                WidthRequest="250"
-                 />
-        </StackLayout>
-    </NavigationPage.TitleView>
     <ContentPage.Content>
-        <ScrollView
-            BackgroundColor="White">
-            <StackLayout>
-                <cards:CarouselView
-                    x:Name="Imagens"
-                    HorizontalOptions="FillAndExpand"
-                    IsVerticalSwipeEnabled="False"
-                    VerticalOptions="FillAndExpand">
-                    <cards:CarouselView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition
-                                        Height="*" />
-                                    <RowDefinition
-                                        Height="Auto" />
-                                </Grid.RowDefinitions>
-                                        <ff:CachedImage
-                                            Source="{Binding .}"
-                                            LoadingPlaceholder="loadingmanga"
-                                            ErrorPlaceholder="errormanga"
-                                            CacheDuration="7"
-                                            RetryCount="5"
-                                            RetryDelay="500"
-                                            Grid.RowSpan="2"
-                                            Aspect="AspectFit">
-                                        </ff:CachedImage>
-                                <!--<StackLayout
-                                    Grid.Row="1"
-                                    BackgroundColor="#80000000"
-                                    Padding="12">
-                                    <Label
-                                        TextColor="White"
-                                        Text="{Binding PageNumber}"
-                                        FontSize="10"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="CenterAndExpand" />
-                                </StackLayout>-->
-                            </Grid>
-                        </DataTemplate>
-                    </cards:CarouselView.ItemTemplate>
-                    <cardsControls:LeftArrowControl
-                        ToFadeDuration="1" />
-                    <cardsControls:RightArrowControl
-                        ToFadeDuration="1" />
-                </cards:CarouselView>
-            </StackLayout>
-        </ScrollView>
+        <AbsoluteLayout
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+            AbsoluteLayout.LayoutFlags="All"
+            BackgroundColor="Black">
+
+            <cards:CarouselView
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                AbsoluteLayout.LayoutFlags="All"
+                x:Name="Imagens"
+                IsCyclical="false"
+                IsViewReusingEnabled="False"
+                IsVerticalSwipeEnabled="False">
+                <cards:CarouselView.ItemTemplate>
+
+                    <DataTemplate>
+                        <Grid
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <ScrollView>
+                                <ff:CachedImage
+                                    Source="{Binding .}"
+                                    FadeAnimationEnabled="False"
+                                    FadeAnimationForCachedImages="False"
+                                    LoadingDelay="0"
+                                    DownsampleToViewSize="True"
+                                    CacheDuration="2"
+                                    RetryCount="5"
+                                    RetryDelay="1000"
+                                    Aspect="AspectFit">
+                                </ff:CachedImage>
+                            </ScrollView>
+                            <StackLayout
+                                Grid.Row="1"
+                                BackgroundColor="Black"
+                                Padding="5">
+                                <Label
+                                    TextColor="White"
+                                    Text="1/24"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+
+                </cards:CarouselView.ItemTemplate>
+            </cards:CarouselView>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
 

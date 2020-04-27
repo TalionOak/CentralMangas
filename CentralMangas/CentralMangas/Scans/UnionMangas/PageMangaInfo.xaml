@@ -11,37 +11,29 @@
         <ScrollView
             BackgroundColor="Black">
             <StackLayout>
-                    <Image
-                        x:Name="MangaFoto"
-                        Aspect="Fill"
-                        HeightRequest="200"
-                        WidthRequest="160"
-                        HorizontalOptions="CenterAndExpand" />
-                <Frame
-                    Padding="0"
-                    HeightRequest="2"
-                    BackgroundColor="Black">
-                    <Label
-                        x:Name="MangaNome"
-                        TextColor="White"
-                        HorizontalOptions="CenterAndExpand" />
-                </Frame>
-                <Frame
-                    HeightRequest="100"
-                    Padding="0"
-                    BackgroundColor="Black">
-                    <Label
-                        x:Name="MangaDescricao"
-                        TextColor="White"
-                        HorizontalOptions="CenterAndExpand" />
-                </Frame>
+                <Image
+                    x:Name="MangaFoto"
+                    Aspect="AspectFill"
+                    HeightRequest="200"
+                    WidthRequest="160"
+                    HorizontalOptions="CenterAndExpand" />
+                <Label
+                    x:Name="MangaNome"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    VerticalOptions="Start"
+                    HorizontalOptions="CenterAndExpand" />
+                <Label
+                    x:Name="MangaDescricao"
+                    TextColor="White"
+                    HorizontalOptions="CenterAndExpand" />
                 <controls:FlexView
                     x:Name="Capitulos"
                     Wrap="Wrap">
                     <controls:FlexView.ItemTemplate>
                         <DataTemplate>
                             <Button
-                                Text="{Binding Nome}"
+                                Text="{Binding NomeCapitulo}"
                                 Clicked="Clicado"
                                 FlexLayout.Basis="25%"
                                 BackgroundColor="#1a1818"

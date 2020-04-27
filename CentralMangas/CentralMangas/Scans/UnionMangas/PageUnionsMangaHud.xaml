@@ -10,93 +10,102 @@
     Title="Union Mangas">
 
     <ContentPage.Content>
-        <StackLayout
-            BackgroundColor="Black">
+        <AbsoluteLayout>
 
-            <SearchBar
-                TextColor="White"
-                BackgroundColor="Black"
-                CancelButtonColor="White"
-                PlaceholderColor="#6e6e6e"
-                Placeholder="Pesquisar mangas, novels..."
-                SearchButtonPressed="PesquisarMangaButtonPressed"
-                TextChanged="PesquisarMangaTextChanged" />
+            <StackLayout
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="Black">
 
+                <SearchBar
+                    TextColor="White"
+                    BackgroundColor="Black"
+                    CancelButtonColor="White"
+                    PlaceholderColor="#6e6e6e"
+                    Placeholder="Pesquisar mangas, novels..."
+                    SearchButtonPressed="PesquisarMangaButtonPressed"
+                    TextChanged="PesquisarMangaTextChanged" />
+
+                <CollectionView
+                    Scrolled="OnScrolled"
+                    x:Name="ListaMangas">
+
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                            VerticalItemSpacing="4"
+                            HorizontalItemSpacing="4"
+                            Orientation="Vertical"
+                            Span="3" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                CornerRadius="5"
+                                HasShadow="True"
+                                IsClippedToBounds="True"
+                                HeightRequest="170"
+                                Padding="0"
+                                BackgroundColor="#1a1818"
+                                BindingContext="{Binding EntidadeManga}">
+
+                                <Frame.GestureRecognizers>
+
+                                    <ClickGestureRecognizer
+                                        Clicked="ClickManga" />
+
+                                    <TapGestureRecognizer
+                                        Tapped="ClickManga" />
+
+                                </Frame.GestureRecognizers>
+
+                                <AbsoluteLayout>
+
+                                    <ActivityIndicator
+                                        IsRunning="{Binding Source={x:Reference image}, Path=IsLoading }"
+                                        AbsoluteLayout.LayoutBounds="0.5,0.5,100,100"
+                                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                                        Color="LightPink" />
+
+                                    <ff:CachedImage
+                                        x:Name="image"
+                                        Source="{Binding LinkFoto}"
+                                        RetryCount="5"
+                                        DownsampleToViewSize="True"
+                                        RetryDelay="1000"
+                                        AbsoluteLayout.LayoutFlags="All"
+                                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                        Aspect="AspectFill">
+                                    </ff:CachedImage>
+                                    <Frame
+                                        Opacity="0.80"
+                                        AbsoluteLayout.LayoutFlags="All"
+                                        AbsoluteLayout.LayoutBounds=".5,1,1,.18"
+                                        Padding="0"
+                                        CornerRadius="0">
+                                        <Label
+                                            TextColor="White"
+                                            FontAttributes="Bold"
+                                            Text="{Binding Nome}"
+                                            HorizontalTextAlignment="Center"
+                                            VerticalTextAlignment="Center">
+                                        </Label>
+                                    </Frame>
+
+                                </AbsoluteLayout>
+                            </Frame>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </StackLayout>
             <ActivityIndicator
-                x:Name="CarregandoIndicador"
+                x:Name="Carregando"
+                IsRunning="true"
+                AbsoluteLayout.LayoutBounds="0.5, 0.1, 0.1, 0.1"
+                AbsoluteLayout.LayoutFlags="All"
                 Color="DeepPink" />
-
-            <CollectionView
-                x:Name="ListaMangas">
-
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout
-                        VerticalItemSpacing="4"
-                        HorizontalItemSpacing="4"
-                        Orientation="Vertical"
-                        Span="3" />
-                </CollectionView.ItemsLayout>
-
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame
-                            CornerRadius="5"
-                            HasShadow="True"
-                            IsClippedToBounds="True"
-                            HeightRequest="170"
-                            Padding="0"
-                            BackgroundColor="#1a1818"
-                            BindingContext="{Binding EntidadeManga}">
-
-                            <Frame.GestureRecognizers>
-
-                                <ClickGestureRecognizer
-                                    Clicked="OnTapped" />
-
-                                <TapGestureRecognizer
-                                    Tapped="OnTapped" />
-
-                            </Frame.GestureRecognizers>
-
-                            <AbsoluteLayout>
-
-                                <ActivityIndicator
-                                    IsRunning="{Binding Source={x:Reference image}, Path=IsLoading }"
-                                    AbsoluteLayout.LayoutBounds="0.5,0.5,100,100"
-                                    AbsoluteLayout.LayoutFlags="PositionProportional"
-                                    Color="LightPink" />
-
-                                <ff:CachedImage
-                                    x:Name="image"
-                                    Source="{Binding Foto}"
-                                    RetryCount="5"
-                                    DownsampleToViewSize="True"
-                                    RetryDelay="1000"
-                                    AbsoluteLayout.LayoutFlags="All"
-                                    AbsoluteLayout.LayoutBounds="0,0,1,1"
-                                    Aspect="AspectFill">
-                                </ff:CachedImage>
-                                <Frame
-                                    Opacity="0.80"
-                                    AbsoluteLayout.LayoutFlags="All"
-                                    AbsoluteLayout.LayoutBounds=".5,1,1,.18"
-                                    Padding="0"
-                                    CornerRadius="0">
-                                    <Label
-                                        TextColor="White"
-                                        FontAttributes="Bold"
-                                        Text="{Binding Nome}"
-                                        HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Center">
-                                    </Label>
-                                </Frame>
-
-                            </AbsoluteLayout>
-                        </Frame>
-
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </StackLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

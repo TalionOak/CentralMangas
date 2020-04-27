@@ -20,6 +20,7 @@ namespace CentralMangas.Scans.UnionMangas
             _capitulo = capitulo;
             CarregarImagens();
             BindingContext = this;
+
         }
 
         public async void CarregarImagens()
@@ -32,6 +33,12 @@ namespace CentralMangas.Scans.UnionMangas
             //    Links.Add(ImageSource.FromUri(new Uri(item)));
             //}
             Imagens.ItemsSource = Texto;
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            Navigation.PopModalAsync(true);
+            return base.OnBackButtonPressed();
         }
     }
 }
